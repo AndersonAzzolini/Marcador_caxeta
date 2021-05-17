@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:untitled/app/core/appColors.dart';
+import 'package:untitled/app/views/login/login.dart';
 
 class ButtonsHomeWidgets extends StatelessWidget {
   @override
@@ -15,7 +17,9 @@ class ButtonsHomeWidgets extends StatelessWidget {
               child: Text("Jogar Online",
                   style: GoogleFonts.robotoSlab(
                       color: Colors.white, fontSize: 27)),
-              onPressed: () {},
+              onPressed: () {
+                Get.to(Login());
+              },
               style: ButtonStyle(
                 shape: MaterialStateProperty.all(RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(30.0))),
@@ -29,7 +33,7 @@ class ButtonsHomeWidgets extends StatelessWidget {
             height: 55,
             width: 330,
             child: TextButton(
-              child: Text("Jogar Online",
+              child: Text("Jogar Offline",
                   style: GoogleFonts.robotoSlab(
                       color: Colors.white, fontSize: 27)),
               onPressed: () {},

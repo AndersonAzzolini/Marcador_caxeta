@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:untitled/app/core/appColors.dart';
 import 'package:untitled/app/views/login/widgets/ButtonsLogin_widgets.dart';
 import 'package:untitled/app/views/login/widgets/TextFieldsLogin_widgets.dart';
 
@@ -6,6 +7,7 @@ class Login extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: AppColors.background,
       body: SingleChildScrollView(
         child: Center(
           child: Column(
