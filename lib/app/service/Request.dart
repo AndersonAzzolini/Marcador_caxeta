@@ -33,16 +33,15 @@ class Request {
   //     print(e.toString());
   //   }
   // }
-  Future<List<MatchInfo>> getMatchInfo() async {
+  Future<List<PlayersPoints>> getMatchInfo() async {
     try {
       http.Response response = await http
           .get(cabecalho, headers: await getHeaders())
           .timeout(Duration(seconds: 25));
-
       if (response.statusCode == 200) {
-        print(response.body);
-        // List<MatchInfo> laudos = json.decode(response.body).map<PlayersPoints>((map) => MatchInfo.fromJson(map));
-
+        final List parsedList = json.decode(response.body)['Players_points'];//utiliza apenas a posição Players_points
+        List<PlayersPoints> list = parsedList.map((val) =>  PlayersPoints.fromJson(val)).toList();
+        return list;
       } else {
         return null;
       }
