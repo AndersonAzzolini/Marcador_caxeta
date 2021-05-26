@@ -4,8 +4,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:untitled/app/controller/loginController.dart';
 import 'package:untitled/app/core/appColors.dart';
 import 'package:untitled/app/views/home_options/home_options.dart';
-import 'package:untitled/app/views/login/register/register.dart';
-
+import 'package:untitled/app/service/Request.dart';
 class ButtonsLogin extends StatelessWidget {
   final LoginController loginController = Get.put(LoginController());
   @override
@@ -40,7 +39,7 @@ class ButtonsLogin extends StatelessWidget {
                   style: GoogleFonts.robotoSlab(
                       color: Colors.white, fontSize: 27)),
               onPressed: () {
-                Get.to(UserRegister());
+                // Get.to(UserRegister());
               },
               style: ButtonStyle(
                 shape: MaterialStateProperty.all(RoundedRectangleBorder(

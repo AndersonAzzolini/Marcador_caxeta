@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:untitled/app/core/appColors.dart';
 import 'package:untitled/app/views/login/login.dart';
+import 'package:untitled/app/views/match/match.dart';
 
 class ButtonsHomeWidgets extends StatelessWidget {
   @override
@@ -36,7 +37,9 @@ class ButtonsHomeWidgets extends StatelessWidget {
               child: Text("Jogar Offline",
                   style: GoogleFonts.robotoSlab(
                       color: Colors.white, fontSize: 27)),
-              onPressed: () {},
+              onPressed: () {
+                Get.to(Match());
+              },
               style: ButtonStyle(
                 shape: MaterialStateProperty.all(RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(30.0))),
