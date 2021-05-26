@@ -7,7 +7,8 @@ import 'package:untitled/app/models/InfoMatch.dart';
 
 class Request {
   static final Request request = Request();
-  var cabecalho = Uri.parse('https://estacionamientodigital.com.py/anderson.json');
+  var cabecalho =
+      Uri.parse('https://estacionamientodigital.com.py/anderson.json');
 
   Future getHeaders() async {
     Map<String, String> headers = {
@@ -39,9 +40,10 @@ class Request {
           .get(cabecalho, headers: await getHeaders())
           .timeout(Duration(seconds: 25));
       if (response.statusCode == 200) {
-        final List parsedList = json.decode(response.body)['Players_points'];//utiliza apenas a posição Players_points
-        List<PlayersPoints> list = parsedList.map((val) =>  PlayersPoints.fromJson(val)).toList();
-        return list;
+        return json
+            .decode(response.body)['Players_points']
+            .map((val) => PlayersPoints.fromJson(val))
+            .toList();
       } else {
         return null;
       }
