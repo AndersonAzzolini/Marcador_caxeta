@@ -9,19 +9,24 @@ class MatchCreateController extends GetxController {
   TextEditingController playersController = TextEditingController();
   TextEditingController pointsController = TextEditingController();
   Request api = Request();
-  dynamic bolo = 0.obs;
+  dynamic bolo = 0.obs();
+  var isLoading = true.obs();
   InfoCash infocash; //CRIA UM NOVA LISTA PARA ARMAZENAR O RETORNO DA API
 
   getList() async {
+    isLoading = true;
     infocash = await api.getMatchInfo();
-    print(jsonEncode(infocash).toString());
     bolo = int.parse(infocash.currentStake);
+    print(jsonEncode(infocash).toString());
+    isLoading = false;
+
   }
 
   @override
   void onInit() async {
     // É a mesma coisa que initState()
+    await getList();
     super.onInit();
-    await getList(); //quando iniciar esse controlador, já busca na API as informações
+    //quando iniciar esse controlador, já busca na API as informações
   }
 }

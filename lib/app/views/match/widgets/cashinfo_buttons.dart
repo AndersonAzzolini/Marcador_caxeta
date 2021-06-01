@@ -18,36 +18,41 @@ class CashInfoButtons extends StatelessWidget {
             padding: const EdgeInsets.symmetric(horizontal: 20),
             child: Container(
               width: 180,
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Obx(
-                    () => Text(
-                      "Rodada atual: " +
-                          _matchCreateController.bolo.toString(),
-                      style: GoogleFonts.robotoSlab(
-                          color: AppColors.buttons,
-                          fontSize: 19,
-                          fontWeight: FontWeight.bold),
-                    ),
-                  ),
-                  Text(
-                    "Carteiro: Azzoza",
-                    style: GoogleFonts.robotoSlab(
-                        color: AppColors.buttons,
-                        fontSize: 19,
-                        fontWeight: FontWeight.bold),
-                  ),
-                  Text(
-                    "Bolo atual: " +
-                        _matchCreateController.infocash.currentStake,
-                    style: GoogleFonts.robotoSlab(
-                        color: AppColors.buttons,
-                        fontSize: 19,
-                        fontWeight: FontWeight.bold),
-                  ),
-                ],
+              child: Obx(
+                () => _matchCreateController.isLoading
+                
+                    ? Center(
+                        child: CircularProgressIndicator(),
+                      )
+                    : Column(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            "Rodada atual: " +
+                                _matchCreateController.bolo.toString(),
+                            style: GoogleFonts.robotoSlab(
+                                color: AppColors.buttons,
+                                fontSize: 19,
+                                fontWeight: FontWeight.bold),
+                          ),
+                          Text(
+                            "Carteiro: Azzoza",
+                            style: GoogleFonts.robotoSlab(
+                                color: AppColors.buttons,
+                                fontSize: 19,
+                                fontWeight: FontWeight.bold),
+                          ),
+                          Text(
+                            "Bolo atual: " +
+                                _matchCreateController.infocash.currentStake,
+                            style: GoogleFonts.robotoSlab(
+                                color: AppColors.buttons,
+                                fontSize: 19,
+                                fontWeight: FontWeight.bold),
+                          ),
+                        ],
+                      ),
               ),
             ),
           ),
