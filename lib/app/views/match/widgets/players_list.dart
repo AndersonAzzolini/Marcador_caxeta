@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:untitled/app/core/appColors.dart';
+import 'package:untitled/app/models/InfoCash.dart';
 
 class ListPlayers extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+
     return Container(
       height: 500,
       child: ListView.builder(

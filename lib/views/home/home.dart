@@ -1,7 +1,7 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:marcador_caxeta/core/app_colors.dart';
+
+import '../../core/app_colors.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({Key key}) : super(key: key);

@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:untitled/app/controller/match_create.dart';
 import 'package:untitled/app/core/appColors.dart';
 
 class CashInfoButtons extends StatelessWidget {
+  final MatchCreateController _matchCreateController =
+      Get.put(MatchCreateController());
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -18,12 +22,15 @@ class CashInfoButtons extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
-                    "Rodada atual: 1",
-                    style: GoogleFonts.robotoSlab(
-                        color: AppColors.buttons,
-                        fontSize: 19,
-                        fontWeight: FontWeight.bold),
+                  Obx(
+                    () => Text(
+                      "Rodada atual: " +
+                          _matchCreateController.bolo.toString(),
+                      style: GoogleFonts.robotoSlab(
+                          color: AppColors.buttons,
+                          fontSize: 19,
+                          fontWeight: FontWeight.bold),
+                    ),
                   ),
                   Text(
                     "Carteiro: Azzoza",
@@ -33,7 +40,8 @@ class CashInfoButtons extends StatelessWidget {
                         fontWeight: FontWeight.bold),
                   ),
                   Text(
-                    "Bolo atual: 10 pila",
+                    "Bolo atual: " +
+                        _matchCreateController.infocash.currentStake,
                     style: GoogleFonts.robotoSlab(
                         color: AppColors.buttons,
                         fontSize: 19,
@@ -55,7 +63,8 @@ class CashInfoButtons extends StatelessWidget {
                           color: Colors.white, fontSize: 18)),
                   onPressed: () {
                     Get.bottomSheet(
-                      Container(height: 150,
+                      Container(
+                        height: 150,
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.end,
                           children: [

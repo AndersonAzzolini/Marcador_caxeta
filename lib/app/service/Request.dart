@@ -3,47 +3,29 @@ import 'dart:convert';
 import 'dart:io';
 
 import 'package:http/http.dart' as http;
+import 'package:untitled/app/models/InfoCash.dart';
 import 'package:untitled/app/models/InfoMatch.dart';
 
 class Request {
   static final Request request = Request();
-  var cabecalho =
-      Uri.parse('https://estacionamientodigital.com.py/anderson.json');
+  var cabecalho = Uri.parse(
+      'https://marcadorcaxeta.000webhostapp.com/matchs/InfoCash/id/5');
 
   Future getHeaders() async {
     Map<String, String> headers = {
+      'token': '5e1e612880b960b3ceeee47b35c28eacc9f4e753',
       'Content-Type': 'application/json',
     };
     return headers;
   }
 
-  // Future<List<MatchInfo>> getMatchInfo() async {
-  //   Uri url = Uri.http(cabecalho, '/Api_marcador/matchs/infos/id/5');
-  //   try {
-  //     final response = await http.get(
-  //       url,
-  //       headers: getHeadres(),
-  //     );
-  //     print(url.toString());
-  //     // List<MatchInfo> data = List<MatchInfo>.from(
-  //     //     json.decode(response.body).map((model) => MatchInfo.fromJson(model)));
-  //     print(response.body);
-  //     // return data;
-  //   } catch (e) {
-  //     print('não acessou');
-  //     print(e.toString());
-  //   }
-  // }
-  Future<List<PlayersPoints>> getMatchInfo() async {
+  Future getMatchInfo() async {
     try {
       http.Response response = await http
           .get(cabecalho, headers: await getHeaders())
           .timeout(Duration(seconds: 25));
       if (response.statusCode == 200) {
-        return json
-            .decode(response.body)['Players_points']
-            .map((val) => PlayersPoints.fromJson(val))
-            .toList();
+      return InfoCash.fromJson(jsonDecode(response.body));
       } else {
         return null;
       }
