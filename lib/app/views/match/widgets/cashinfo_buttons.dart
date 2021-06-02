@@ -29,7 +29,7 @@ class CashInfoButtons extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            "Rodada atual: " +
+                            "Rodada atdsdsual: " +
                                 _matchCreateController.bolo.toString(),
                             style: GoogleFonts.robotoSlab(
                                 color: AppColors.buttons,
