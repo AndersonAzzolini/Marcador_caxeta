@@ -4,6 +4,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:untitled/app/controller/match_create.dart';
 import 'package:untitled/app/core/appColors.dart';
 import 'package:untitled/app/views/match_create/match_create.dart';
+import 'package:untitled/app/views/match_in_progress/match_in_progress.dart';
 
 class HomePageOptionButtons extends StatelessWidget {
   MatchCreateController matchController = Get.put(MatchCreateController());
@@ -55,7 +56,9 @@ class HomePageOptionButtons extends StatelessWidget {
               child: Text("Partidas passadas",
                   style: GoogleFonts.robotoSlab(
                       color: Colors.white, fontSize: 27)),
-              onPressed: () {},
+              onPressed: () {
+                Get.to(MatchInProgress());
+              },
               style: ButtonStyle(
                 shape: MaterialStateProperty.all(RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(30.0))),
@@ -72,10 +75,7 @@ class HomePageOptionButtons extends StatelessWidget {
               child: Text("Partidas em andamento",
                   style: GoogleFonts.robotoSlab(
                       color: Colors.white, fontSize: 27)),
-              onPressed: () {
-                matchController.getList();
-                print('btn press');
-              },
+              onPressed: () {},
               style: ButtonStyle(
                 shape: MaterialStateProperty.all(RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(30.0))),

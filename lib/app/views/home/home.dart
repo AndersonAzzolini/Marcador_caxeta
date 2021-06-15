@@ -3,6 +3,7 @@ import 'package:untitled/app/core/appColors.dart';
 import 'package:untitled/app/views/home/widgets/buttons_widgets.dart';
 
 class HomePage extends StatelessWidget {
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(

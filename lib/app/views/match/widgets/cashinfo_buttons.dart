@@ -19,7 +19,7 @@ class CashInfoButtons extends StatelessWidget {
             child: Container(
               width: 180,
               child: Obx(
-                () => _matchCreateController.isLoading
+                () => _matchCreateController.isLoading == true
                 
                     ? Center(
                         child: CircularProgressIndicator(),

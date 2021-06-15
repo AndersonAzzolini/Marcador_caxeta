@@ -20,7 +20,7 @@ class ButtonsLogin extends StatelessWidget {
                   style: GoogleFonts.robotoSlab(
                       color: Colors.white, fontSize: 27)),
               onPressed: () {
-                Get.to(HomePageOptions());
+                loginController.getLogin();
               },
               style: ButtonStyle(
                 shape: MaterialStateProperty.all(RoundedRectangleBorder(

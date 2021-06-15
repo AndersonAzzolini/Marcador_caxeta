@@ -9,7 +9,7 @@ import 'package:untitled/app/models/InfoMatch.dart';
 class Request {
   static final Request request = Request();
   var cabecalho = Uri.parse(
-      'https://marcadorcaxeta.000webhostapp.com/matchs/InfoCash/id/5');
+      'https://senac.cotafrete.com/api_marcador/matchs/InfoCash/id/5');
 
   Future getHeaders() async {
     Map<String, String> headers = {
