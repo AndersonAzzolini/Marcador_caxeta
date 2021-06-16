@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:untitled/app/views/home/home.dart';
+import 'package:untitled/app/views/login/login.dart';
 
 main() {
   runApp(MyApp());
@@ -18,3 +19,14 @@ class MyApp extends StatelessWidget {
     );
   }
 }
+
+//  _checkLogin() async {
+//   SharedPreferences prefs = await SharedPreferences.getInstance();
+//   bool login = prefs.getBool('login');
+//   if(login == true){
+//     return HomePage();
+//   }else{
+//     return Login();
+//   }
+// }
+

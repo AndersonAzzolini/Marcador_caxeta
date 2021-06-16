@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:untitled/app/core/appColors.dart';
+import 'package:untitled/app/models/loginModel.dart';
 import 'package:untitled/app/views/home_options/widgets/buttons_widgets.dart';
 
 class HomePageOptions extends StatelessWidget {
+  // loginModel modelUser; para usar o model, wigdet.nomeVariavel
+  int idUser;
+  HomePageOptions(this.idUser);
   @override
   Widget build(BuildContext context) {
     return Scaffold(
