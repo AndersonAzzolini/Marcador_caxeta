@@ -16,8 +16,6 @@ class Login extends StatelessWidget {
               SizedBox(height: 20),
               Image.asset('assets/images/logo.png'),
               SizedBox(height: 20),
-              TextFieldsLogin(),
-              SizedBox(height: 20),
               ButtonsLogin(),
               SizedBox(height: 20),
             ],

@@ -22,6 +22,11 @@ class FormRegister extends StatelessWidget {
                     borderRadius: BorderRadius.circular(10),
                     borderSide: BorderSide(color: AppColors.buttons, width: 2)),
               ),
+              validator: (value) {
+                if (value == "") {
+                  return "Os campos não podem ser vazios";
+                }
+              },
             ),
           ),
           SizedBox(height: 20),
@@ -40,6 +45,11 @@ class FormRegister extends StatelessWidget {
                     borderRadius: BorderRadius.circular(10),
                     borderSide: BorderSide(color: AppColors.buttons, width: 2)),
               ),
+              validator: (value) {
+                if (value == "") {
+                  return "Os campos não podem ser vazios";
+                }
+              },
             ),
           ),
           SizedBox(height: 20),

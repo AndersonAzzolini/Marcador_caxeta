@@ -17,7 +17,7 @@ class UserRequest {
     return headers;
   }
 
-  Future<loginModel> getLogin(email, senha) async {
+  Future<LoginModel> getLogin(email, senha) async {
     var url = Uri.parse('https://senac.cotafrete.com/api_marcador/user/login/');
 
     try {
@@ -26,12 +26,9 @@ class UserRequest {
               headers: await getHeaders(),
               body: jsonEncode({"user": email, "password": senha}))
           .timeout(Duration(seconds: 10));
-      print(response.body);
-      if (response.statusCode == 200) {
-        return loginModel.fromJson(json.decode(response.body));
-      } else {
-        return loginModel.fromJson(json.decode(response.body));
-      }
+      if (response.statusCode != null) {
+        return LoginModel.fromJson(json.decode(response.body));
+      } 
     } on TimeoutException catch (e) {
       print('Timeout Error: $e');
     } on SocketException catch (e) {
@@ -41,7 +38,6 @@ class UserRequest {
       print('General Error: $e');
       return null;
     }
-    print('caiu no nukk');
     return null;
   }
 }

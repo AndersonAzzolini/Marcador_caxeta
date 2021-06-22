@@ -1,10 +1,10 @@
-class loginModel {
+class LoginModel {
   bool status;
   String idUser;
 
-  loginModel({this.status, this.idUser});
+  LoginModel({this.status, this.idUser});
 
-  loginModel.fromJson(Map<String, dynamic> json) {
+  LoginModel.fromJson(Map<String, dynamic> json) {
     status = json['status'];
     idUser = json['id_user'];
   }

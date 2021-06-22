@@ -10,23 +10,38 @@ class LoginController extends GetxController {
   TextEditingController senhaController = TextEditingController();
   UserRequest api = UserRequest();
   dynamic response;
+  RxBool isLoading = false.obs;
+
+  showLoader() {
+    Get.dialog(
+      Container(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            CircularProgressIndicator(),
+          ],
+        ),
+      ),
+    );
+  }
+
   getLogin() async {
-    loginModel response =
-        await api.getLogin(emailController.text, senhaController.text);
+    LoginModel response = await Future.delayed(Duration(microseconds: 100),
+        () => api.getLogin(emailController.text, senhaController.text));
     if (response.status == true) {
       Get.to(HomePageOptions(int.parse(response.idUser)));
     } else {
+      Get.back();
       Get.defaultDialog(
-        confirm: TextButton(
-            onPressed: () {
-              Get.back();
-            },
-            child: Text("Ok")),
-        title: ("Erro ao realizar login"),
-        titleStyle: TextStyle(fontSize: 22),
-        middleTextStyle:TextStyle(fontSize: 15),
-        middleText:("Usuário ou senha incorretos")
-      );
+          confirm: TextButton(
+              onPressed: () {
+                Get.back();
+              },
+              child: Text("Ok")),
+          title: ("Erro ao realizar login"),
+          titleStyle: TextStyle(fontSize: 22),
+          middleTextStyle: TextStyle(fontSize: 15),
+          middleText: ("Usuário ou senha incorretos"));
     }
   }
 }
