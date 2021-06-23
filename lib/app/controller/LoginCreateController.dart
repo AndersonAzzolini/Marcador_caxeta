@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:untitled/app/models/CreateLogin.dart';
 import 'package:untitled/app/service/Login_create.dart';
-import 'package:untitled/app/views/login/login.dart';
 
 class LoginCreateController extends GetxController {
   final TextEditingController senha = TextEditingController();
@@ -34,7 +33,6 @@ class LoginCreateController extends GetxController {
           confirm: TextButton(
               onPressed: () {
                 Get.back();
-                Get.to(Login());
               },
               child: Text("Ok")),
           title: ("Excelente!"),
@@ -50,7 +48,7 @@ class LoginCreateController extends GetxController {
               },
               child: Text("Ok")),
           title: ("Barbaridade!"),
-          titleStyle: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+          titleStyle: TextStyle(fontSize: 22,),
           middleTextStyle: TextStyle(fontSize: 15),
           middleText: ("Email já cadastrado no sistema"));
     }

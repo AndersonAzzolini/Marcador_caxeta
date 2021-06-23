@@ -17,33 +17,34 @@ class ButtonsLogin extends StatelessWidget {
           Column(
             children: [
               Container(
-                  height: 55,
-                  width: 330,
-                  child: Form(
-                    key: _formKey,
-                    child: TextFormField(
-                      controller: loginController.emailController,
-                      keyboardType: TextInputType.emailAddress,
-                      decoration: InputDecoration(
-                        labelText: "Email",
-                        enabledBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(10),
-                            borderSide:
-                                BorderSide(color: AppColors.buttons, width: 2)),
-                        focusedBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(10),
-                            borderSide:
-                                BorderSide(color: AppColors.buttons, width: 2)),
-                      ),
-                      validator: (value) {
-                        if (!value.isNotEmpty) {
-                          return "Preencha tods os campos";
-                        }
-                        return null;
-                      },
-                      autocorrect: true,
+                height: 55,
+                width: 330,
+                child: Form(
+                  key: _formKey,
+                  child: TextFormField(
+                    controller: loginController.emailController,
+                    keyboardType: TextInputType.emailAddress,
+                    decoration: InputDecoration(
+                      labelText: "Email",
+                      enabledBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(10),
+                          borderSide:
+                              BorderSide(color: AppColors.buttons, width: 2)),
+                      focusedBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(10),
+                          borderSide:
+                              BorderSide(color: AppColors.buttons, width: 2)),
                     ),
-                  )),
+                    validator: (value) {
+                      if (!value.isNotEmpty) {
+                        return "Preencha tods os campos";
+                      }
+                      return null;
+                    },
+                    autocorrect: true,
+                  ),
+                ),
+              ),
               SizedBox(height: 20),
               Container(
                 height: 55,

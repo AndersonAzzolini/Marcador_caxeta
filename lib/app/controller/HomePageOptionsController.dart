@@ -7,7 +7,9 @@ class HomePageOptionsController extends GetxController {
     return Get.defaultDialog(
         confirm: TextButton(
             onPressed: () {
-              Get.to(Login());
+              Get.back();
+              Get.back();
+              Get.back();
               return true;
             },
             child: Text("Ok")),
