@@ -12,6 +12,11 @@ class LoginController extends GetxController {
   UserRequest api = UserRequest();
   dynamic response;
 
+  clearForm(){
+    emailController.clear();
+    senhaController.clear();
+  }
+
   showLoader() {
     Get.dialog(
       Container(
@@ -29,6 +34,7 @@ class LoginController extends GetxController {
     LoginModel response = await Future.delayed(Duration(microseconds: 100),
         () => api.getLogin(emailController.text, senhaController.text));
     if (response.status == true) {
+      clearForm();
       Get.to(HomePageOptions(int.parse(response.idUser)));
     } else {
       Get.back();
