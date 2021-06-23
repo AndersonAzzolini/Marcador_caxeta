@@ -10,7 +10,6 @@ class LoginController extends GetxController {
   TextEditingController senhaController = TextEditingController();
   UserRequest api = UserRequest();
   dynamic response;
-  RxBool isLoading = false.obs;
 
   showLoader() {
     Get.dialog(
