@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:untitled/app/controller/LoginCreateController.dart';
 import 'package:untitled/app/core/appColors.dart';
 
 class UserRegister extends StatelessWidget {
+  final LoginCreateController loginCreateController =
+      Get.put(LoginCreateController());
+
   final _formKey = GlobalKey<FormState>();
-  final TextEditingController senha = TextEditingController();
-  final TextEditingController confirmaSenha = TextEditingController();
-  final TextEditingController email = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -32,7 +33,7 @@ class UserRegister extends StatelessWidget {
                       height: 55,
                       width: 330,
                       child: TextFormField(
-                        controller: email,
+                        controller: loginCreateController.email,
                         autovalidateMode: AutovalidateMode.onUserInteraction,
                         keyboardType: TextInputType.emailAddress,
                         decoration: InputDecoration(
@@ -63,7 +64,7 @@ class UserRegister extends StatelessWidget {
                       height: 55,
                       width: 330,
                       child: TextFormField(
-                        controller: senha,
+                        controller: loginCreateController.senha,
                         autovalidateMode: AutovalidateMode.onUserInteraction,
                         obscureText: true,
                         keyboardType: TextInputType.text,
@@ -92,7 +93,7 @@ class UserRegister extends StatelessWidget {
                       height: 55,
                       width: 330,
                       child: TextFormField(
-                        controller: confirmaSenha,
+                        controller: loginCreateController.confirmaSenha,
                         autovalidateMode: AutovalidateMode.onUserInteraction,
                         autocorrect: true,
                         obscureText: true,
@@ -111,7 +112,8 @@ class UserRegister extends StatelessWidget {
                         validator: (_validatorConfirmaSenha) {
                           if (!_validatorConfirmaSenha.isNotEmpty) {
                             return "Campo obrigatório";
-                          } else if (senha.text != confirmaSenha.text) {
+                          } else if (loginCreateController.senha.text !=
+                              loginCreateController.confirmaSenha.text) {
                             return "Senhas não conferem";
                           }
                           return null;
@@ -129,7 +131,9 @@ class UserRegister extends StatelessWidget {
                             style: GoogleFonts.robotoSlab(
                                 color: Colors.white, fontSize: 27)),
                         onPressed: () {
-                          if (_formKey.currentState.validate()) {}
+                          if (_formKey.currentState.validate()) {
+                            loginCreateController.createLogin();
+                          }
                         },
                         style: ButtonStyle(
                           shape: MaterialStateProperty.all(

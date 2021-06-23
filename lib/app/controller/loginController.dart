@@ -43,4 +43,5 @@ class LoginController extends GetxController {
           middleText: ("Usuário ou senha incorretos"));
     }
   }
+
 }

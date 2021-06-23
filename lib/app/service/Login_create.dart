@@ -2,10 +2,10 @@ import 'dart:async';
 import 'dart:convert';
 import 'dart:io';
 import 'package:http/http.dart' as http;
-import 'package:untitled/app/models/loginModel.dart';
+import 'package:untitled/app/models/CreateLogin.dart';
 
-class UserRequest {
-  static final UserRequest request = UserRequest();
+class LoginCreate {
+  static final LoginCreate request = LoginCreate();
 
   Future getHeaders() async {
     Map<String, String> headers = {
@@ -14,9 +14,9 @@ class UserRequest {
     };
     return headers;
   }
-
-  Future<LoginModel> getLogin(email, senha) async {
-    var url = Uri.parse('https://senac.cotafrete.com/api_marcador/user/login/');
+// http://192.168.2.130/Api_marcador/user/create/'
+  Future createNewLogin(email, senha) async {
+    var url = Uri.parse('https://senac.cotafrete.com/api_marcador/user/create/');
 
     try {
       http.Response response = await http
@@ -25,8 +25,8 @@ class UserRequest {
               body: jsonEncode({"user": email, "password": senha}))
           .timeout(Duration(seconds: 10));
       if (response.statusCode != null) {
-        return LoginModel.fromJson(json.decode(response.body));
-      } 
+        return CreateLogin.fromJson(json.decode(response.body));
+      }
     } on TimeoutException catch (e) {
       print('Timeout Error: $e');
     } on SocketException catch (e) {
