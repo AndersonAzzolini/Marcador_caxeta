@@ -16,7 +16,8 @@ class MatchCreateService {
     return headers;
   }
 
-  Future<Match_model> creatMatchPost(stake, initialPoints, nameMatch, amountPlayers, idUser) async {
+  Future<Match_model> creatMatchPost(
+      stake, initialPoints, nameMatch, amountPlayers, idUser) async {
     var url =
         Uri.parse('https://senac.cotafrete.com/api_marcador/matchs/create/');
     try {
@@ -31,18 +32,15 @@ class MatchCreateService {
                 "idUser": idUser
               }))
           .timeout(Duration(seconds: 10));
-      if (response.statusCode != null) {
-        var teste = jsonDecode(response.body);
-        return Match_model.fromJson(teste);
-       }
+      if (response.statusCode == 200) {
+        return Match_model.fromJson(jsonDecode(response.body));
+      }
     } on TimeoutException catch (e) {
       print('Timeout Error: $e');
     } on SocketException catch (e) {
       print('Socket Error: $e');
-      return null;
     } on Error catch (e) {
       print('General Error: $e');
-      return null;
     }
     return null;
   }

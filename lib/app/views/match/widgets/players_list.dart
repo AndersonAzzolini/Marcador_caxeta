@@ -1,17 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:untitled/app/core/appColors.dart';
-import 'package:untitled/app/models/InfoCash.dart';
+import 'package:untitled/app/models/Match_model.dart';
 
 class ListPlayers extends StatelessWidget {
+  final List<Jogadores> jogadores;
+  ListPlayers(this.jogadores); //recebe como parâmetro a lista de jogadores
+
   @override
   Widget build(BuildContext context) {
-
     return Container(
       height: 300,
       child: ListView.builder(
         shrinkWrap: true,
-        itemCount: 9,
+        itemCount: jogadores.length,
         itemBuilder: (context, index) {
           return SingleChildScrollView(
             child: Container(
@@ -37,7 +39,7 @@ class ListPlayers extends StatelessWidget {
                       height: 61,
                       child: Center(
                         child: Text(
-                          "Azzoza",
+                          jogadores[index].name,
                           style: GoogleFonts.robotoSlab(
                               color: AppColors.buttons,
                               fontSize: 22,

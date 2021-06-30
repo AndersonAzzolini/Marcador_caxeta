@@ -5,6 +5,7 @@ import 'package:untitled/app/core/appColors.dart';
 import 'package:get/get.dart';
 import 'package:untitled/app/models/Match_model.dart';
 import 'package:untitled/app/models/loginModel.dart';
+import 'package:untitled/app/views/match/match.dart';
 
 class MatchCreate extends StatelessWidget {
   final MatchCreateController matchCreateController =
@@ -132,9 +133,13 @@ class MatchCreate extends StatelessWidget {
                       style: GoogleFonts.robotoSlab(
                           color: Colors.white, fontSize: 27)),
                   onPressed: () async {
-                   Match_model  m = await matchCreateController.criacaoPartida(idUser);
-                   print(m.partida.name);
-                   print(m.jogadores);
+                    Match_model partida =
+                        await matchCreateController.criacaoPartida(idUser);
+                    if (partida != null) {
+                      Get.to(Match(partida));
+                    } else {
+                      //partida não criada.
+                    }
                   },
                   style: ButtonStyle(
                     shape: MaterialStateProperty.all(RoundedRectangleBorder(
