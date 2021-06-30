@@ -18,6 +18,7 @@ class MatchCreateController extends GetxController {
   var amountPlayers;
 
   Future<Match_model> criacaoPartida(idUser) async {
+    Get.defaultDialog(title: 'criando partida...');
     stake = stakeMatchController.text;
     nameMatch = nameMatchController.text;
     initialPoints = pointsController.text;

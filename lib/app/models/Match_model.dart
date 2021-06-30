@@ -81,3 +81,10 @@ class Jogadores {
     return data;
   }
 }
+
+class StatusRodada {
+  int rodada; //id da rodada
+  int jogador; //id do jogador
+  int status; //status na rodada
+  StatusRodada(this.rodada, this.jogador, this.status);
+}
