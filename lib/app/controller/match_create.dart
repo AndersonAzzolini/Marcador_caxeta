@@ -11,7 +11,7 @@ class MatchCreateController extends GetxController {
   TextEditingController stakeMatchController = TextEditingController();
 
   MatchCreateService api = MatchCreateService();
-  
+
   var stake;
   var initialPoints;
   var nameMatch;
@@ -25,25 +25,6 @@ class MatchCreateController extends GetxController {
 
     var response = await api.creatMatchPost(
         stake, initialPoints, nameMatch, amountPlayers, idUser);
-    print(response);
+    return response;
   }
-
-  // teste(idUser) {
-  //   print(idUser);
-
-  //   print(model.nameMatch + " " + model.amountPlayers.toString());
-  // }
-
-  // getList() async {
-  //   infocash = await api.getMatchInfo();
-  //   bolo = int.parse(infocash.currentStake);
-  //   print(jsonEncode(infocash).toString());
-  // }
-
-  // void onInit() async {
-  //   // É a mesma coisa que initState()
-  //   await getList();
-  //   super.onInit();
-  //   //quando iniciar esse controlador, já busca na API as informações
-  // }
 }

@@ -3,6 +3,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:untitled/app/controller/match_create.dart';
 import 'package:untitled/app/core/appColors.dart';
 import 'package:get/get.dart';
+import 'package:untitled/app/models/Match_model.dart';
 import 'package:untitled/app/models/loginModel.dart';
 
 class MatchCreate extends StatelessWidget {
@@ -130,8 +131,10 @@ class MatchCreate extends StatelessWidget {
                   child: Text("Criar partida",
                       style: GoogleFonts.robotoSlab(
                           color: Colors.white, fontSize: 27)),
-                  onPressed: () {
-                    matchCreateController.criacaoPartida(idUser);
+                  onPressed: () async {
+                   Match_model  m = await matchCreateController.criacaoPartida(idUser);
+                   print(m.partida.name);
+                   print(m.jogadores);
                   },
                   style: ButtonStyle(
                     shape: MaterialStateProperty.all(RoundedRectangleBorder(
