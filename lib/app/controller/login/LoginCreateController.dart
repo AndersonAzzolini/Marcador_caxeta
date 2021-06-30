@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:untitled/app/models/CreateLogin.dart';
-import 'package:untitled/app/service/Login_create.dart';
+import 'package:untitled/app/service/Login_create_service.dart';
 
 class LoginCreateController extends GetxController {
   final TextEditingController senha = TextEditingController();

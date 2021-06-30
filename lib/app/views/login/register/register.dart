@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:untitled/app/controller/LoginCreateController.dart';
+import 'package:untitled/app/controller/login/LoginCreateController.dart';
 import 'package:untitled/app/core/appColors.dart';
 
 class UserRegister extends StatelessWidget {
@@ -38,7 +38,8 @@ class UserRegister extends StatelessWidget {
                         keyboardType: TextInputType.emailAddress,
                         decoration: InputDecoration(
                           border: UnderlineInputBorder(),
-                          hintText: "Digite seu email",
+                          labelText: "Digite seu email",
+                          // hintText: "Digite seu email",
                           enabledBorder: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(10),
                               borderSide: BorderSide(

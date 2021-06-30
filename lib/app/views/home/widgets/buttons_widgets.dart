@@ -38,7 +38,17 @@ class ButtonsHomeWidgets extends StatelessWidget {
                   style: GoogleFonts.robotoSlab(
                       color: Colors.white, fontSize: 27)),
               onPressed: () {
-                Get.to(Match());
+                Get.defaultDialog(
+          confirm: TextButton(
+              onPressed: () {
+                Get.back();
+              },
+              child: Text("Ok")),
+          title: ("Me desculpe!!"),
+          titleStyle: TextStyle(fontSize: 22),
+          middleTextStyle: TextStyle(fontSize: 15),
+          middleText: ("Estamos em manutenção.. eterna."));
+                // Get.to(Match());
               },
               style: ButtonStyle(
                 shape: MaterialStateProperty.all(RoundedRectangleBorder(

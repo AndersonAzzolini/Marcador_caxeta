@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:untitled/app/controller/loginController.dart';
+import 'package:untitled/app/controller/login/loginController.dart';
 import 'package:untitled/app/core/appColors.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:untitled/app/controller/loginController.dart';
+import 'package:untitled/app/controller/login/loginController.dart';
 import 'package:untitled/app/views/login/register/register.dart';
 
 class Login extends StatelessWidget {
