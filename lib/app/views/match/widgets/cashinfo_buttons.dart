@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:untitled/app/controller/match_create.dart';
+import 'package:untitled/app/controller/match/match_create.dart';
 import 'package:untitled/app/core/appColors.dart';
 import 'package:untitled/app/models/Match_model.dart';
 

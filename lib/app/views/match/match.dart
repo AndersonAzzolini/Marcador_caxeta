@@ -7,7 +7,6 @@ import 'package:untitled/app/views/match/widgets/players_list.dart';
 
 class Match extends StatelessWidget {
   Match_model partida;
-
   Match(this.partida);
 
   @override

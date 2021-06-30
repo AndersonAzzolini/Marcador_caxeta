@@ -1,12 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:untitled/app/controller/match/match_controller.dart';
 import 'package:untitled/app/core/appColors.dart';
 import 'package:untitled/app/models/Match_model.dart';
+import 'package:get/get.dart';
 
 class ListPlayers extends StatelessWidget {
+  final MatchController matchController = Get.put(MatchController());
+
   final List<Jogadores> jogadores;
   final Match_model teste;
-  ListPlayers(this.jogadores, {this.teste}); //recebe como parâmetro a lista de jogadores
+  ListPlayers(this.jogadores,
+      {this.teste}); //recebe como parâmetro a lista de jogadores
 
   @override
   Widget build(BuildContext context) {
@@ -39,12 +44,17 @@ class ListPlayers extends StatelessWidget {
                     Container(
                       height: 61,
                       child: Center(
-                        child: Text(
-                          jogadores[index].name,
-                          style: GoogleFonts.robotoSlab(
-                              color: AppColors.buttons,
-                              fontSize: 15,
-                              fontWeight: FontWeight.bold),
+                        child: TextButton(
+                          onPressed: () {
+                            matchController.editaJogador(jogadores[index].id);
+                          },
+                          child: Text(
+                            jogadores[index].name,
+                            style: GoogleFonts.robotoSlab(
+                                color: AppColors.buttons,
+                                fontSize: 15,
+                                fontWeight: FontWeight.bold),
+                          ),
                         ),
                       ),
                     ),
