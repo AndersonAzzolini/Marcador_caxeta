@@ -5,7 +5,8 @@ import 'package:untitled/app/models/Match_model.dart';
 
 class ListPlayers extends StatelessWidget {
   final List<Jogadores> jogadores;
-  ListPlayers(this.jogadores); //recebe como parâmetro a lista de jogadores
+  final Match_model teste;
+  ListPlayers(this.jogadores, {this.teste}); //recebe como parâmetro a lista de jogadores
 
   @override
   Widget build(BuildContext context) {
@@ -42,7 +43,7 @@ class ListPlayers extends StatelessWidget {
                           jogadores[index].name,
                           style: GoogleFonts.robotoSlab(
                               color: AppColors.buttons,
-                              fontSize: 22,
+                              fontSize: 15,
                               fontWeight: FontWeight.bold),
                         ),
                       ),
@@ -83,7 +84,7 @@ class ListPlayers extends StatelessWidget {
                           child: Text("16",
                               style: GoogleFonts.robotoSlab(
                                   color: AppColors.buttons,
-                                  fontSize: 22,
+                                  fontSize: 15,
                                   fontWeight: FontWeight.bold))),
                     ),
                   ]),

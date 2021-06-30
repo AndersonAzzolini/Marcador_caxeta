@@ -3,12 +3,16 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:untitled/app/controller/match_create.dart';
 import 'package:untitled/app/core/appColors.dart';
+import 'package:untitled/app/models/Match_model.dart';
 
 class CashInfoButtons extends StatelessWidget {
   final MatchCreateController _matchCreateController =
       Get.put(MatchCreateController());
+      Partida partida;
+      CashInfoButtons(this.partida);
 
   @override
+  
   Widget build(BuildContext context) {
     return Container(
       height: 180,
@@ -23,24 +27,24 @@ class CashInfoButtons extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    "Rodada atdsdsual: ",
+                    "Rodada atual: ${partida.currentRound}",
                     style: GoogleFonts.robotoSlab(
                         color: AppColors.buttons,
-                        fontSize: 19,
+                        fontSize: 17,
                         fontWeight: FontWeight.bold),
                   ),
                   Text(
                     "Carteiro: Azzoza",
                     style: GoogleFonts.robotoSlab(
                         color: AppColors.buttons,
-                        fontSize: 19,
+                        fontSize: 17,
                         fontWeight: FontWeight.bold),
                   ),
                   Text(
-                    "Bolo atual: ",
+                    "Bolo atual: ${partida.currentStake}",
                     style: GoogleFonts.robotoSlab(
                         color: AppColors.buttons,
-                        fontSize: 19,
+                        fontSize: 17,
                         fontWeight: FontWeight.bold),
                   ),
                 ],
@@ -52,11 +56,11 @@ class CashInfoButtons extends StatelessWidget {
             children: [
               Container(
                 height: 65,
-                width: 175,
+                width: 150,
                 child: TextButton(
                   child: Text("Oções da partida",
                       style: GoogleFonts.robotoSlab(
-                          color: Colors.white, fontSize: 18)),
+                          color: Colors.white, fontSize: 16)),
                   onPressed: () {
                     Get.bottomSheet(
                       Container(
@@ -73,7 +77,7 @@ class CashInfoButtons extends StatelessWidget {
                                     "Histórico",
                                     style: GoogleFonts.robotoSlab(
                                         color: AppColors.buttons,
-                                        fontSize: 25,
+                                        fontSize: 20,
                                         fontWeight: FontWeight.bold),
                                   ),
                                   onTap: () => print("teste"),
@@ -89,7 +93,7 @@ class CashInfoButtons extends StatelessWidget {
                                     "Compras",
                                     style: GoogleFonts.robotoSlab(
                                         color: AppColors.buttons,
-                                        fontSize: 25,
+                                        fontSize: 20,
                                         fontWeight: FontWeight.bold),
                                   ),
                                 ),
@@ -110,11 +114,11 @@ class CashInfoButtons extends StatelessWidget {
               ),
               Container(
                 height: 65,
-                width: 175,
+                width: 150,
                 child: TextButton(
                   child: Text("Próxima rodada",
                       style: GoogleFonts.robotoSlab(
-                          color: Colors.white, fontSize: 18)),
+                          color: Colors.white, fontSize: 17)),
                   onPressed: () {},
                   style: ButtonStyle(
                     shape: MaterialStateProperty.all(RoundedRectangleBorder(

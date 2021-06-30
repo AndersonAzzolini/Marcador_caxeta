@@ -25,7 +25,7 @@ class Match extends StatelessWidget {
             SizedBox(height: 2),
             ListPlayers(
                 partida.jogadores), //envia a lista de jogadores para o widget
-            CashInfoButtons(),
+            CashInfoButtons(partida.partida),
           ],
         ),
       ),
