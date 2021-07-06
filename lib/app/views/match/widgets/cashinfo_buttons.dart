@@ -9,6 +9,7 @@ class CashInfoButtons extends StatelessWidget {
   final MatchCreateController _matchCreateController =
       Get.put(MatchCreateController());
       Partida partida;
+      List<Jogadores> jogadores;
       CashInfoButtons(this.partida);
 
   @override

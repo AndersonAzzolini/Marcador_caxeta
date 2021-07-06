@@ -96,7 +96,9 @@ class HomePageOptions extends StatelessWidget {
                           child: Text("Partidas em andamento",
                               style: GoogleFonts.robotoSlab(
                                   color: Colors.white, fontSize: 27)),
-                          onPressed: () {},
+                          onPressed: () {
+                            Get.to(MatchInProgress());
+                          },
                           style: ButtonStyle(
                             shape: MaterialStateProperty.all(
                                 RoundedRectangleBorder(

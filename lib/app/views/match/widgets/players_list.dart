@@ -10,6 +10,7 @@ class ListPlayers extends StatelessWidget {
 
   final List<Jogadores> jogadores;
   final Match_model teste;
+  String _groupValue;
   ListPlayers(this.jogadores,
       {this.teste}); //recebe como parâmetro a lista de jogadores
 
@@ -46,7 +47,7 @@ class ListPlayers extends StatelessWidget {
                       child: Center(
                         child: TextButton(
                           onPressed: () {
-                            matchController.editaJogador(jogadores[index].id);
+                            matchController.opcoesJogador(jogadores[index]);
                           },
                           child: Text(
                             jogadores[index].name,
@@ -61,30 +62,31 @@ class ListPlayers extends StatelessWidget {
                     Container(
                       height: 61,
                       child: Radio(
-                        value: 1,
-                        groupValue: 1,
+                        value: "correu",
+                        groupValue: _groupValue,
                         onChanged: (val) {
-                          print("Radio ${val}");
+                          Obx(() => _groupValue = val);
                         },
                       ),
                     ),
                     Container(
                       height: 61,
                       child: Radio(
-                        value: 2,
-                        groupValue: 1,
+                        value: "perdeu",
+                        groupValue: _groupValue,
                         onChanged: (val) {
-                          print("Radio ${val}");
+                          Obx(() => _groupValue = val);
+                          print("radio" +val);
                         },
                       ),
                     ),
                     Container(
                       height: 61,
                       child: Radio(
-                        value: 3,
-                        groupValue: 1,
+                        value: "venceu",
+                        groupValue: _groupValue,
                         onChanged: (val) {
-                          print("Radio ${val}");
+                          Obx(() => _groupValue = val);
                         },
                       ),
                     ),
