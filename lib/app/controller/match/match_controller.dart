@@ -3,11 +3,11 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:untitled/app/core/appColors.dart';
 import 'package:untitled/app/models/Match_model.dart';
-import 'package:untitled/app/service/Match_service.dart';
+import 'package:untitled/app/service/match_in_progress_service.dart';
 
 class MatchController extends GetxController {
 
-  MatchService api = MatchService();
+  MatchInProgressService api = MatchInProgressService();
 
   opcoesJogador(id) {
     Get.bottomSheet(

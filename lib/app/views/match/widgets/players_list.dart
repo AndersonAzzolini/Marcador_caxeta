@@ -5,14 +5,18 @@ import 'package:untitled/app/core/appColors.dart';
 import 'package:untitled/app/models/Match_model.dart';
 import 'package:get/get.dart';
 
-class ListPlayers extends StatelessWidget {
-  final MatchController matchController = Get.put(MatchController());
-
+class ListPlayers extends StatefulWidget {
   final List<Jogadores> jogadores;
   final Match_model teste;
-  String _groupValue;
-  ListPlayers(this.jogadores,
-      {this.teste}); //recebe como parâmetro a lista de jogadores
+
+  ListPlayers(this.jogadores, {this.teste});
+  @override
+  _ListPlayersState createState() => _ListPlayersState();
+}
+
+class _ListPlayersState extends State<ListPlayers> {
+  final MatchController matchController = Get.put(MatchController());
+List<String> radioValues = [];
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +24,7 @@ class ListPlayers extends StatelessWidget {
       height: 300,
       child: ListView.builder(
         shrinkWrap: true,
-        itemCount: jogadores.length,
+        itemCount: widget.jogadores.length,
         itemBuilder: (context, index) {
           return SingleChildScrollView(
             child: Container(
@@ -47,10 +51,11 @@ class ListPlayers extends StatelessWidget {
                       child: Center(
                         child: TextButton(
                           onPressed: () {
-                            matchController.opcoesJogador(jogadores[index]);
+                            matchController
+                                .opcoesJogador(widget.jogadores[index]);
                           },
                           child: Text(
-                            jogadores[index].name,
+                            widget.jogadores[index].name,
                             style: GoogleFonts.robotoSlab(
                                 color: AppColors.buttons,
                                 fontSize: 15,
@@ -63,37 +68,39 @@ class ListPlayers extends StatelessWidget {
                       height: 61,
                       child: Radio(
                         value: "correu",
-                        groupValue: _groupValue,
+                        groupValue: "correu" + index.toString(),
                         onChanged: (val) {
-                          Obx(() => _groupValue = val);
+                        
                         },
                       ),
                     ),
                     Container(
                       height: 61,
                       child: Radio(
-                        value: "perdeu",
-                        groupValue: _groupValue,
+                        value: "perdeu" + index.toString(),
+                        groupValue: "perdeu" + index.toString(),
                         onChanged: (val) {
-                          Obx(() => _groupValue = val);
-                          print("radio" +val);
+                          setState(() {
+                          });
                         },
                       ),
                     ),
                     Container(
                       height: 61,
                       child: Radio(
-                        value: "venceu",
-                        groupValue: _groupValue,
+                        value: "venceu"+index.toString(),
+                        groupValue: "venceu"+index.toString(),
                         onChanged: (val) {
-                          Obx(() => _groupValue = val);
+                          setState(() {
+
+                          });
                         },
                       ),
                     ),
                     Container(
                       height: 61,
                       child: Center(
-                          child: Text("16",
+                          child: Text("",
                               style: GoogleFonts.robotoSlab(
                                   color: AppColors.buttons,
                                   fontSize: 15,
