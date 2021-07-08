@@ -33,7 +33,7 @@ class InfoHeader extends StatelessWidget {
                   "Jogadores",
                   style: GoogleFonts.robotoSlab(
                       color: AppColors.buttons,
-                      fontSize: 22,
+                      fontSize: 19,
                       fontWeight: FontWeight.bold),
                 ),
               ),
@@ -45,7 +45,7 @@ class InfoHeader extends StatelessWidget {
                   "Correu",
                   style: GoogleFonts.robotoSlab(
                       color: AppColors.buttons,
-                      fontSize: 22,
+                      fontSize: 19,
                       fontWeight: FontWeight.bold),
                 ),
               ),
@@ -57,7 +57,7 @@ class InfoHeader extends StatelessWidget {
                   "Perdeu",
                   style: GoogleFonts.robotoSlab(
                       color: AppColors.buttons,
-                      fontSize: 22,
+                      fontSize: 19,
                       fontWeight: FontWeight.bold),
                 ),
               ),
@@ -69,7 +69,7 @@ class InfoHeader extends StatelessWidget {
                   "Venceu",
                   style: GoogleFonts.robotoSlab(
                       color: AppColors.buttons,
-                      fontSize: 22,
+                      fontSize: 19,
                       fontWeight: FontWeight.bold),
                 ),
               ),
@@ -81,7 +81,7 @@ class InfoHeader extends StatelessWidget {
                   "Pts",
                   style: GoogleFonts.robotoSlab(
                       color: AppColors.buttons,
-                      fontSize: 22,
+                      fontSize: 19,
                       fontWeight: FontWeight.bold),
                 ),
               ),

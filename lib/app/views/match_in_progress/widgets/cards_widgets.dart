@@ -7,6 +7,7 @@ class MatchCards extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       child: ListView.builder(
+          itemCount: 5,
           itemBuilder: (context, index) {
             return Column(
               children: [

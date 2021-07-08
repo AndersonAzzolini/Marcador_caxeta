@@ -7,7 +7,6 @@ import 'package:untitled/app/views/match/widgets/players_list.dart';
 
 class Match extends StatelessWidget {
   Match_model partida;
-
   Match(this.partida);
 
   @override
@@ -25,7 +24,7 @@ class Match extends StatelessWidget {
             SizedBox(height: 2),
             ListPlayers(
                 partida.jogadores), //envia a lista de jogadores para o widget
-            CashInfoButtons(),
+            CashInfoButtons(partida.partida),
           ],
         ),
       ),

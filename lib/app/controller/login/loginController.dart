@@ -11,7 +11,7 @@ class LoginController extends GetxController {
   UserRequest api = UserRequest();
   dynamic response;
 
-  clearForm(){
+  clearForm() {
     emailController.clear();
     senhaController.clear();
   }

@@ -1,11 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:untitled/app/controller/match/match_controller.dart';
 import 'package:untitled/app/core/appColors.dart';
 import 'package:untitled/app/models/Match_model.dart';
+import 'package:get/get.dart';
 
-class ListPlayers extends StatelessWidget {
+class ListPlayers extends StatefulWidget {
   final List<Jogadores> jogadores;
-  ListPlayers(this.jogadores); //recebe como parâmetro a lista de jogadores
+  final Match_model teste;
+
+  ListPlayers(this.jogadores, {this.teste});
+  @override
+  _ListPlayersState createState() => _ListPlayersState();
+}
+
+class _ListPlayersState extends State<ListPlayers> {
+  final MatchController matchController = Get.put(MatchController());
+List<String> radioValues = [];
 
   @override
   Widget build(BuildContext context) {
@@ -13,7 +24,7 @@ class ListPlayers extends StatelessWidget {
       height: 300,
       child: ListView.builder(
         shrinkWrap: true,
-        itemCount: jogadores.length,
+        itemCount: widget.jogadores.length,
         itemBuilder: (context, index) {
           return SingleChildScrollView(
             child: Container(
@@ -38,52 +49,61 @@ class ListPlayers extends StatelessWidget {
                     Container(
                       height: 61,
                       child: Center(
-                        child: Text(
-                          jogadores[index].name,
-                          style: GoogleFonts.robotoSlab(
-                              color: AppColors.buttons,
-                              fontSize: 22,
-                              fontWeight: FontWeight.bold),
+                        child: TextButton(
+                          onPressed: () {
+                            matchController
+                                .opcoesJogador(widget.jogadores[index]);
+                          },
+                          child: Text(
+                            widget.jogadores[index].name,
+                            style: GoogleFonts.robotoSlab(
+                                color: AppColors.buttons,
+                                fontSize: 15,
+                                fontWeight: FontWeight.bold),
+                          ),
                         ),
                       ),
                     ),
                     Container(
                       height: 61,
                       child: Radio(
-                        value: 1,
-                        groupValue: 1,
+                        value: "correu",
+                        groupValue: "correu" + index.toString(),
                         onChanged: (val) {
-                          print("Radio ${val}");
+                        
                         },
                       ),
                     ),
                     Container(
                       height: 61,
                       child: Radio(
-                        value: 2,
-                        groupValue: 1,
+                        value: "perdeu" + index.toString(),
+                        groupValue: "perdeu" + index.toString(),
                         onChanged: (val) {
-                          print("Radio ${val}");
+                          setState(() {
+                          });
                         },
                       ),
                     ),
                     Container(
                       height: 61,
                       child: Radio(
-                        value: 3,
-                        groupValue: 1,
+                        value: "venceu"+index.toString(),
+                        groupValue: "venceu"+index.toString(),
                         onChanged: (val) {
-                          print("Radio ${val}");
+                          setState(() {
+
+                          });
                         },
                       ),
                     ),
                     Container(
                       height: 61,
                       child: Center(
-                          child: Text("16",
+                          child: Text("",
                               style: GoogleFonts.robotoSlab(
                                   color: AppColors.buttons,
-                                  fontSize: 22,
+                                  fontSize: 15,
                                   fontWeight: FontWeight.bold))),
                     ),
                   ]),
