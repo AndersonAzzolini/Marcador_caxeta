@@ -15,15 +15,20 @@ class MatchInProgressService {
     return headers;
   }
 
-  Future<InProgressMatch> teste() async {
+  Future<List<InProgressMatch>> getInprogress() async {
     var url = Uri.parse(
         'https://senac.cotafrete.com/api_marcador/matchs/matchsInProgress/id/49');
     try {
       http.Response response = await http
           .get(url, headers: await getHeaders())
           .timeout(Duration(seconds: 10));
+      print(response.body);
       if (response.statusCode == 200) {
-        return InProgressMatch.fromJson(jsonDecode(response.body));
+        List<InProgressMatch> inProgress = json
+            .decode(response.body)
+            .map<InProgressMatch>((map) => InProgressMatch.fromJson(map))
+            .toList();
+        return inProgress;
       }
     } on TimeoutException catch (e) {
       print('Timeout Error: $e');
