@@ -73,26 +73,6 @@ class HomePageOptions extends StatelessWidget {
                         height: 55,
                         width: 330,
                         child: TextButton(
-                          child: Text("Partidas passadas",
-                              style: GoogleFonts.robotoSlab(
-                                  color: Colors.white, fontSize: 27)),
-                          onPressed: () {
-                            Get.to(MatchInProgress());
-                          },
-                          style: ButtonStyle(
-                            shape: MaterialStateProperty.all(
-                                RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(30.0))),
-                            backgroundColor: MaterialStateProperty.all<Color>(
-                                AppColors.buttons),
-                          ),
-                        ),
-                      ),
-                      SizedBox(height: 20),
-                      Container(
-                        height: 55,
-                        width: 330,
-                        child: TextButton(
                           child: Text("Partidas em andamento",
                               style: GoogleFonts.robotoSlab(
                                   color: Colors.white, fontSize: 27)),
