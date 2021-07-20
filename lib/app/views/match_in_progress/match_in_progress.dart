@@ -9,6 +9,8 @@ import 'package:untitled/app/models/match_in_progress_model.dart';
 class MatchInProgress extends StatelessWidget {
   final MatchInProgressController matchInProgressController =
       Get.put(MatchInProgressController());
+  int idUser;
+  MatchInProgress(this.idUser);
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +21,7 @@ class MatchInProgress extends StatelessWidget {
         backgroundColor: AppColors.buttons,
       ),
       body: FutureBuilder<List<InProgressMatch>>(
-        future: matchInProgressController.buscarPartidasEmAndamento(),
+        future: matchInProgressController.buscarPartidasEmAndamento(idUser),
         builder: (context, index) {
           switch (index.connectionState) {
             case ConnectionState.none:

@@ -12,7 +12,7 @@ class MatchInProgressController extends GetxController {
 
   MatchInProgressService api = MatchInProgressService();
 
-  Future<List<InProgressMatch>> buscarPartidasEmAndamento() async {
-    return await api.getInprogress();
+  Future<List<InProgressMatch>> buscarPartidasEmAndamento(idUser) async {
+    return await api.getInprogress(idUser);
   }
 }

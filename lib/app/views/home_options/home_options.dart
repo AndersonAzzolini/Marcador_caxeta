@@ -77,7 +77,7 @@ class HomePageOptions extends StatelessWidget {
                               style: GoogleFonts.robotoSlab(
                                   color: Colors.white, fontSize: 27)),
                           onPressed: () {
-                            Get.to(MatchInProgress());
+                            Get.to(MatchInProgress(idUser));
                           },
                           style: ButtonStyle(
                             shape: MaterialStateProperty.all(

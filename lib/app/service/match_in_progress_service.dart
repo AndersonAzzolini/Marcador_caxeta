@@ -15,9 +15,9 @@ class MatchInProgressService {
     return headers;
   }
 
-  Future<List<InProgressMatch>> getInprogress() async {
+  Future<List<InProgressMatch>> getInprogress(idUser) async {
     var url = Uri.parse(
-        'https://senac.cotafrete.com/api_marcador/matchs/matchsInProgress/id/49');
+        'https://senac.cotafrete.com/api_marcador/matchs/matchsInProgress/id/'+idUser.toString());
     try {
       http.Response response = await http
           .get(url, headers: await getHeaders())
