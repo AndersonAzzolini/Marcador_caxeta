@@ -3,7 +3,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:untitled/app/controller/HomePageOptionsController.dart';
 import 'package:untitled/app/core/appColors.dart';
 import 'package:untitled/app/models/Match_model.dart';
-import 'package:untitled/app/views/match_in_progress/match_in_progress.dart';
+import 'package:untitled/app/views/match_in_progress/list_match_in_progress.dart';
 import 'package:untitled/app/views/match_create/match_create.dart';
 import 'package:get/get.dart';
 

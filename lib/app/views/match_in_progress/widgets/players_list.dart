@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:untitled/app/controller/match/match_controller.dart';
 import 'package:untitled/app/core/appColors.dart';
-import 'package:untitled/app/models/Match_model.dart';
 import 'package:get/get.dart';
+import 'package:untitled/app/models/partidaPorId.dart';
 
 class ListPlayers extends StatefulWidget {
   final List<Jogadores> jogadores;
@@ -54,7 +54,7 @@ List<String> radioValues = [];
                                 .opcoesJogador(widget.jogadores[index]);
                           },
                           child: Text(
-                            widget.jogadores[index].name,
+                            widget.jogadores[index].namePlayer,
                             style: GoogleFonts.robotoSlab(
                                 color: AppColors.buttons,
                                 fontSize: 15,

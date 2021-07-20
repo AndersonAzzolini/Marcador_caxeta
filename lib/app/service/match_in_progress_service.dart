@@ -2,7 +2,9 @@ import 'dart:async';
 import 'dart:convert';
 import 'dart:io';
 import 'package:http/http.dart' as http;
+import 'package:untitled/app/models/Match_model.dart';
 import 'package:untitled/app/models/match_in_progress_model.dart';
+import 'package:untitled/app/models/partidaPorId.dart';
 
 class MatchInProgressService {
   static final MatchInProgressService request = MatchInProgressService();
@@ -15,9 +17,31 @@ class MatchInProgressService {
     return headers;
   }
 
+  Future<partidaPorId> getMatchInProgressId(idMatch) async {
+    var url = Uri.parse(
+        'https://senac.cotafrete.com/api_marcador/matchs/Infos/id/' +
+            idMatch.toString());
+    try {
+      http.Response response = await http
+          .get(url, headers: await getHeaders())
+          .timeout(Duration(seconds: 10));
+      if (response.statusCode == 200) {
+        return partidaPorId.fromJson(jsonDecode(response.body));
+      }
+    } on TimeoutException catch (e) {
+      print('Timeout Error: $e');
+    } on SocketException catch (e) {
+      print('Socket Error: $e');
+    } on Error catch (e) {
+      print('General Error: $e');
+    }
+    return null;
+  }
+
   Future<List<InProgressMatch>> getInprogress(idUser) async {
     var url = Uri.parse(
-        'https://senac.cotafrete.com/api_marcador/matchs/matchsInProgress/id/'+idUser.toString());
+        'https://senac.cotafrete.com/api_marcador/matchs/matchsInProgress/id/' +
+            idUser.toString());
     try {
       http.Response response = await http
           .get(url, headers: await getHeaders())

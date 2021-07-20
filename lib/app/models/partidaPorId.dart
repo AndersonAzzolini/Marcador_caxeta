@@ -1,12 +1,16 @@
-class Match_model {
-  Partida partida;
+class partidaPorId {
+  List<Partida> partida;
   List<Jogadores> jogadores;
 
-  Match_model({this.partida, this.jogadores});
+  partidaPorId({this.partida, this.jogadores});
 
-  Match_model.fromJson(Map<String, dynamic> json) {
-    partida =
-        json['partida'] != null ? new Partida.fromJson(json['partida']) : null;
+  partidaPorId.fromJson(Map<String, dynamic> json) {
+    if (json['partida'] != null) {
+      partida = new List<Partida>();
+      json['partida'].forEach((v) {
+        partida.add(new Partida.fromJson(v));
+      });
+    }
     if (json['jogadores'] != null) {
       jogadores = new List<Jogadores>();
       json['jogadores'].forEach((v) {
@@ -18,7 +22,7 @@ class Match_model {
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
     if (this.partida != null) {
-      data['partida'] = this.partida.toJson();
+      data['partida'] = this.partida.map((v) => v.toJson()).toList();
     }
     if (this.jogadores != null) {
       data['jogadores'] = this.jogadores.map((v) => v.toJson()).toList();
@@ -28,67 +32,50 @@ class Match_model {
 }
 
 class Partida {
-  String name;
-  int currentStake;
-  int currentRound;
-  String dateCreate;
-  String createdByUser;
+  String amountPlayers;
+  String amountPurchase;
+  String currentStake;
+  String currentRound;
   String initialPoints;
 
   Partida(
-      {this.name,
+      {this.amountPlayers,
+      this.amountPurchase,
       this.currentStake,
       this.currentRound,
-      this.dateCreate,
-      this.createdByUser,
       this.initialPoints});
 
   Partida.fromJson(Map<String, dynamic> json) {
-    name = json['name'];
+    amountPlayers = json['amount_players'];
+    amountPurchase = json['amount_purchase'];
     currentStake = json['current_stake'];
     currentRound = json['current_round'];
-    dateCreate = json['date_create'];
-    createdByUser = json['created_by_user'];
     initialPoints = json['initial_points'];
   }
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['name'] = this.name;
+    data['amount_players'] = this.amountPlayers;
+    data['amount_purchase'] = this.amountPurchase;
     data['current_stake'] = this.currentStake;
     data['current_round'] = this.currentRound;
-    data['date_create'] = this.dateCreate;
-    data['created_by_user'] = this.createdByUser;
     data['initial_points'] = this.initialPoints;
     return data;
   }
 }
 
 class Jogadores {
-  String name;
-  String points;
-  int id;
+  String namePlayer;
 
-  Jogadores({this.name, this.points, this.id});
+  Jogadores({this.namePlayer});
 
   Jogadores.fromJson(Map<String, dynamic> json) {
-    name = json['name'];
-    points = json['points'];
-    id = json['id'];
+    namePlayer = json['name_player'];
   }
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['name'] = this.name;
-    data['points'] = this.points;
-    data['id'] = this.id;
+    data['name_player'] = this.namePlayer;
     return data;
   }
-}
-
-class StatusRodada {
-  int rodada; //id da rodada
-  int jogador; //id do jogador
-  int status; //status na rodada
-  StatusRodada(this.rodada, this.jogador, this.status);
 }
