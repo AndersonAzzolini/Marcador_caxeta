@@ -1,3 +1,5 @@
+import 'package:custom_radio_grouped_button/CustomButtons/ButtonTextStyle.dart';
+import 'package:custom_radio_grouped_button/CustomButtons/CustomRadioButton.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:untitled/app/controller/match/match_controller.dart';
@@ -6,108 +8,95 @@ import 'package:get/get.dart';
 import 'package:untitled/app/models/partidaPorId.dart';
 
 class ListPlayers extends StatefulWidget {
-  final List<Jogadores> jogadores;
+  final partidaPorId partida;
 
-  ListPlayers(this.jogadores);
+  ListPlayers(this.partida);
   @override
   _ListPlayersState createState() => _ListPlayersState();
 }
 
 class _ListPlayersState extends State<ListPlayers> {
   final MatchController matchController = Get.put(MatchController());
-List<String> radioValues = [];
+  List<String> radioValues = [];
+  int groupValue1;
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 300,
+      height: MediaQuery.of(context).size.width *1.35,
       child: ListView.builder(
         shrinkWrap: true,
-        itemCount: widget.jogadores.length,
+        itemCount: widget.partida.jogadores.length,
         itemBuilder: (context, index) {
           return SingleChildScrollView(
-            child: Container(
-              decoration: BoxDecoration(
-                border: Border(
-                  bottom: BorderSide(
-                    color: AppColors.stroke,
-                    width: 2.0,
-                  ),
-                ),
-              ),
-              child: Table(
-                columnWidths: {
-                  0: FlexColumnWidth(1.5),
-                  1: FlexColumnWidth(1),
-                  2: FlexColumnWidth(1),
-                  3: FlexColumnWidth(1),
-                  4: FlexColumnWidth(0.5),
-                },
-                children: [
-                  TableRow(children: [
-                    Container(
-                      height: 61,
-                      child: Center(
-                        child: TextButton(
-                          onPressed: () {
-                            matchController
-                                .opcoesJogador(widget.jogadores[index]);
-                          },
-                          child: Text(
-                            widget.jogadores[index].namePlayer,
-                            style: GoogleFonts.robotoSlab(
-                                color: AppColors.buttons,
-                                fontSize: 15,
-                                fontWeight: FontWeight.bold),
-                          ),
-                        ),
-                      ),
-                    ),
-                    Container(
-                      height: 61,
-                      child: Radio(
-                        value: "correu",
-                        groupValue: "correu" + index.toString(),
-                        onChanged: (val) {
-                      
-                        },
-                      ),
-                    ),
-                    Container(
-                      height: 61,
-                      child: Radio(
-                        value: "perdeu" + index.toString(),
-                        groupValue: "perdeu" + index.toString(),
-                        onChanged: (val) {
-                          setState(() {
-                          });
-                        },
-                      ),
-                    ),
-                    Container(
-                      height: 61,
-                      child: Radio(
-                        value: "venceu"+index.toString(),
-                        groupValue: "venceu"+index.toString(),
-                        onChanged: (val) {
-                          setState(() {
-
-                          });
-                        },
-                      ),
-                    ),
-                    Container(
-                      height: 61,
-                      child: Center(
-                          child: Text("",
+            child: Column(
+              children: [
+                Container(
+                  child: Row(
+                    children: [
+                      Container(
+                        height: 61,
+                        width: MediaQuery.of(context).size.width * 0.25,
+                        child: Center(
+                          child: TextButton(
+                            onPressed: () {
+                              matchController
+                                  .opcoesJogador(widget.partida.jogadores[index]);
+                            },
+                            child: Text(
+                              widget.partida.jogadores[index].namePlayer,
                               style: GoogleFonts.robotoSlab(
                                   color: AppColors.buttons,
                                   fontSize: 15,
-                                  fontWeight: FontWeight.bold))),
+                                  fontWeight: FontWeight.bold),
+                            ),
+                          ),
+                        ),
+                      ),
+                      Container(
+                        height: 61,
+                        width: MediaQuery.of(context).size.width * 0.75,
+                        child: CustomRadioButton(
+                          width: MediaQuery.of(context).size.width * 0.11,
+                          enableShape: true,
+                          customShape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(30)),
+                        horizontal: false,                      
+                          spacing: 5,
+                          unSelectedColor: Theme.of(context).canvasColor,
+                          buttonLables: [
+                            '    .',
+                            '    ..',
+                            '    ...',
+                          ],
+                          buttonValues: [
+                            "Correu",
+                            "Perdeu",
+                            "Ganhou",
+                          ],
+                          buttonTextStyle: ButtonTextStyle(
+                              
+                              selectedColor: Colors.white,
+                              unSelectedColor: Colors.black,
+                              textStyle: TextStyle(fontSize: 1)),
+                          radioButtonValue: (value) {
+                            print(value);
+                          },
+                          selectedColor: AppColors.buttons,
+                        ),
+                      ),
+                    ],
+                  ),
+                  decoration: BoxDecoration(
+                    border: Border(
+                      bottom: BorderSide(
+                        color: AppColors.stroke,
+                        width: 2.0,
+                      ),
                     ),
-                  ]),
-                ],
-              ),
+                  ),
+                ),
+              ],
             ),
           );
         },
