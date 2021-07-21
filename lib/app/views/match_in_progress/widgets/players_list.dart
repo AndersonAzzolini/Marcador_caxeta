@@ -65,7 +65,7 @@ class _ListPlayersState extends State<ListPlayers> {
                           spacing: 5,
                           unSelectedColor: Theme.of(context).canvasColor,
                           buttonLables: [
-                            '    ....',
+                            '    ....;',
                             '    ..',
                             '    ...',
                           ],
